@@ -14,27 +14,21 @@ portieren.md
 portieren-s3.md
 MERGE-PROTOCOL.md
 managed_components/
-
-# tools/ IS published: it ships the release packager (tools/make_factory_bin.ps1).
+tools/
 release/network_adapter_esp32c6*.bin
-# NOTE: release/archive/ and release/ota/archive/ are ALREADY TRACKED: the rule below
-# only keeps *new* superseded images out of git until they are added explicitly.
-# (Re-staging the whole index - "git rm -r --cached . && git add -A" - would drop them.)
 release/archive/
 release/ota/archive/
-firmware/archive/
-firmware/.*.tmp
 main/ui/weather_icons/**
 !main/ui/weather_icons/
 !main/ui/weather_icons/UPSTREAM_LINK.txt
 
-# Generated LVGL fonts ARE published on purpose: main/CMakeLists.txt auto-detects
+# Generated LVGL fonts are tracked on purpose: main/CMakeLists.txt auto-detects
 # them and silently falls back to the built-in LVGL faces when they are missing,
-# so excluding them would make a fresh clone render with different typography.
+# so a clone without them would render with different typography.
 # Regeneration is described in main/ui/fonts/README.md.
 
-# Panel variant manifest is generated from main/idf_component.panel{4,7,10}.yml
-# (plus panels3) by the top-level CMakeLists.txt on every configure. Do not edit or commit.
+# Panel variant manifest is generated from main/idf_component.panel{4,10}.yml
+# by the top-level CMakeLists.txt on every configure. Do not edit or commit.
 main/idf_component.yml
 
 # Local diagnostics / dev artifacts - never publish.
